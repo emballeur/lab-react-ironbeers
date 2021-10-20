@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class SingleBeer extends Component {
   state = {
@@ -31,13 +32,23 @@ class SingleBeer extends Component {
             <Card.Img
               variant="top"
               src={this.state.singleBeer.image_url}
+              className="rounded mx-auto d-block"
               alt=""
             />
 
             <Card.Body>
-              <Card.Title>{this.state.singleBeer.name}</Card.Title>
+              <Card.Title>
+                {this.state.singleBeer.name}{' '}
+                {this.state.singleBeer.attenuation_level}
+              </Card.Title>
               <Card.Text>
-                <p>{this.state.singleBeer.tagline}</p>
+                <p>
+                  {this.state.singleBeer.tagline}{' '}
+                  <b> {this.state.singleBeer.first_brewed}</b>
+                </p>
+
+                <p>{this.state.singleBeer.description}</p>
+
                 <p>
                   {' '}
                   <b>Created By: </b> {this.state.singleBeer.contributed_by}
