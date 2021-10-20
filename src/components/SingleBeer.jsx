@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class SingleBeer extends Component {
@@ -23,6 +24,11 @@ class SingleBeer extends Component {
   render() {
     return (
       <div>
+        <Link to="/">
+          <h1> Home </h1>
+        </Link>
+        <h1> Have you ever tried this?</h1>
+
         {this.state.isLoading && <h1>...is Loading</h1>}
 
         {!this.state.isLoading && (

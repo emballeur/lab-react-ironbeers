@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 class NewBeer extends Component {
   state = {
     name: '',
+    tagline: '',
     description: '',
+    firstBrewed: '',
+    brewersTips: '',
+    attentuationLevel: '',
     contributedBy: '',
   };
 
@@ -18,7 +22,11 @@ class NewBeer extends Component {
     axios
       .post('https://ih-beers-api2.herokuapp.com/beers/new', {
         name: this.state.name,
+        tagline: this.state.tagline,
         description: this.state.description,
+        first_brewed: this.state.firstBrewed,
+        brewers_tips: this.state.brewersTips,
+        attentuation_level: this.state.attentuationLevel,
         contributed_by: this.state.contributedBy,
       })
       .then(() => {
@@ -33,7 +41,7 @@ class NewBeer extends Component {
         <Link to="/">
           <h1> Home </h1>
         </Link>
-        <h1> Add Beer Form</h1>
+        <h1> Add A New Beer</h1>
 
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">name</label>
@@ -44,7 +52,7 @@ class NewBeer extends Component {
             value={this.state.name}
           />
 
-          <label htmlFor="description">name</label>
+          <label htmlFor="description">description</label>
 
           <input
             onChange={this.handleChange}
