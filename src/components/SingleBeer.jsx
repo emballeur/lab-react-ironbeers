@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
 
 class SingleBeer extends Component {
   state = {
@@ -21,10 +22,30 @@ class SingleBeer extends Component {
   render() {
     return (
       <div>
-        <h1>Single Beer</h1>
-
         {this.state.isLoading && <h1>...is Loading</h1>}
-        {!this.state.isLoading && <h1>{this.state.singleBeer.name}</h1>}
+
+        {!this.state.isLoading && (
+          <Card border="secondary" style={{ width: '18rem' }}>
+            {/* <h2>{this.state.singleBeer.name}</h2> */}
+
+            <Card.Img
+              variant="top"
+              src={this.state.singleBeer.image_url}
+              alt=""
+            />
+
+            <Card.Body>
+              <Card.Title>{this.state.singleBeer.name}</Card.Title>
+              <Card.Text>
+                <p>{this.state.singleBeer.tagline}</p>
+                <p>
+                  {' '}
+                  <b>Created By: </b> {this.state.singleBeer.contributed_by}
+                </p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        )}
       </div>
     );
   }

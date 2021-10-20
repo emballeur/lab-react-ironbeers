@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
 
 class AllBeers extends Component {
   state = {
@@ -32,10 +33,24 @@ class AllBeers extends Component {
           this.state.listOfBeers.map((eachBeer) => {
             return (
               <div>
-                <Link to={`beers/${eachBeer._id}`}>
-                  <img src={eachBeer.image_url} alt="" height="200px" />
-                  <h3>{eachBeer.name}</h3>
-                </Link>
+                <Card border="secondary" style={{ width: '18rem' }}>
+                  <Link to={`beers/${eachBeer._id}`}>
+                    <Card.Img variant="top" src={eachBeer.image_url} alt="" />
+                  </Link>
+                  <Card.Body>
+                    <Card.Title>{eachBeer.name}</Card.Title>
+                    <Card.Text>
+                      <p>{eachBeer.tagline}</p>
+                      <p>
+                        {' '}
+                        <b>Created By: </b> {eachBeer.contributed_by}
+                      </p>
+                    </Card.Text>
+                    <Card.Link href={`beers/${eachBeer._id}`}>
+                      See Details
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
               </div>
             );
           })}
@@ -44,3 +59,27 @@ class AllBeers extends Component {
   }
 }
 export default AllBeers;
+
+{
+  /* <Link to={`beers/${eachBeer._id}`}>
+                  <img src={eachBeer.image_url} alt="" height="200px" />
+                  <h3>{eachBeer.name}</h3>
+                </Link>
+                <p>{eachBeer.tagline}</p>
+                <p>
+                  {' '}
+                  <b>Created By: </b> {eachBeer.contributed_by}
+                </p> */
+}
+
+/* <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="holder.js/100px180" />
+  <Card.Body>
+    <Card.Title>Card Title</Card.Title>
+    <Card.Text>
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </Card.Text>
+    <Button variant="primary">Go somewhere</Button>
+  </Card.Body>
+</Card> */
